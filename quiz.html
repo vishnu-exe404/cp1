@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Quiz Challenge — CyberGuard SOC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="cyber-theme.css">
+</head>
+<body>
+
+  <!-- Top Real-Time Threat Telemetry Marquee -->
+  <div class="ticker-bar" id="liveTickerBar">
+    <div class="wrap ticker-inner">
+      <div class="ticker-badge"><span class="pulse-dot"></span> LIVE INTEL</div>
+      <div class="ticker-content" id="tickerContent">
+        <span>⚠ HIGH-ALERT:</span> Spurt in fake <strong>CBI / Digital Arrest</strong> extortion video calls reported across Delhi NCR & Mumbai.
+        <span>•</span> <span>HOTLINE:</span> Dial <strong>1930</strong> within 2 hours of unauthorized financial debit to freeze money in transit.
+        <span>•</span> <span>ALERT:</span> New wave of malicious <strong>Electricity Bill Disconnection SMS</strong> with fraudulent .APK links neutralized.
+        <span>•</span> <span>ADVISORY:</span> Indian Courts & Police NEVER place individuals under "Digital Arrest" via WhatsApp or Skype.
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Sticky Header -->
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a href="index.html" class="sidebar-brand">
+        <span class="brand-name">CyberGuard SOC</span>
+        <span class="brand-tag">Real-Time Defense Model</span>
+      </a>
+
+      <nav class="sidebar-nav">
+        <a href="index.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          Dashboard
+        </a>
+        <a href="scanner.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          Scam & SMS Scanner
+        </a>
+        <a href="email.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg>
+          Email Scanner
+        </a>
+        <a href="url-hunter.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          URL Hunter
+        </a>
+        <a href="apk-scanner.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          APK Scanner
+        </a>
+        <a href="password-vault.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Password Vault
+        </a>
+        <a href="quiz.html" class="sidebar-link active">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Quiz Challenge
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="live-pill" id="livePill">
+          <span class="green-dot"></span> Telemetry Active
+        </div>
+        <button class="btn-icon" id="soundToggleBtn" onclick="toggleAudio()" title="Toggle Cyber Audio Alerts">
+          <svg id="soundIconOn" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <svg id="soundIconOff" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <div class="main-content">
+
+  <main class="wrap">
+
+    <!-- ================= VIEW 6: SPOT-THE-SCAM QUIZ ================= -->
+    <div id="view-quiz" class="panel-view active">
+      <div class="panel-card quiz-card">
+        <div class="panel-head">
+          <div class="panel-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            Interactive Cyber Scam Spotting Simulator
+          </div>
+          <span class="score-badge" id="quizScoreBadge">Score: 0 / 5</span>
+        </div>
+
+        <div class="quiz-progress-head">
+          <span id="quizQuestionNum">Question 1 of 5</span>
+          <span id="quizCategoryLabel">Category: Digital Arrest</span>
+        </div>
+
+        <div class="risk-progress-bar" style="margin-bottom:18px;">
+          <div class="risk-progress-fill" id="quizProgressBar" style="width:20%; background:var(--cyan);"></div>
+        </div>
+
+        <div class="quiz-scenario-box" id="quizScenarioText">
+          Loading scenario...
+        </div>
+
+        <div class="quiz-options">
+          <button class="quiz-choice-btn" id="btnChoiceScam" onclick="handleQuizAnswer(true)">
+            🚨 This is a SCAM / Phishing
+          </button>
+          <button class="quiz-choice-btn" id="btnChoiceLegit" onclick="handleQuizAnswer(false)">
+            ✅ This is SAFE & Legitimate
+          </button>
+        </div>
+
+        <div id="quizFeedbackBox" style="display:none; margin-top:20px;" class="action-guidance">
+          <!-- Feedback rendered here -->
+        </div>
+
+        <button class="btn-primary" id="btnNextQuiz" onclick="nextQuizQuestion()" style="display:none; margin-top:16px; width:100%; justify-content:center;">
+          Next Challenge →
+        </button>
+      </div>
+    </div>
+
+
+  </main>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="cyber-toast" id="cyberToast">
+    <span id="toastMsg">Action completed successfully</span>
+  </div>
+
+  <!-- Educational Project Footer -->
+  <footer class="cyber-footer wrap">
+    <div class="footer-row">
+      <div>
+        <div style="font-weight:700; color:var(--text-main); margin-bottom:4px;">
+          Community Project · Cyber Security Awareness Platform
+        </div>
+        <div style="font-size:0.8rem; color:var(--text-dim);">
+          Course Code 1BCP308 · Semester III · Real-Time Threat Intelligence & Scam Detection Model
+        </div>
+      </div>
+
+      <div style="display:flex; gap:16px; align-items:center;">
+        <a href="https://cybercrime.gov.in" target="_blank" rel="noopener" style="color:var(--cyan); text-decoration:none;">cybercrime.gov.in</a>
+        <span>·</span>
+        <a href="tel:1930" style="color:var(--rose); font-weight:700; text-decoration:none;">Helpline: 1930</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="cyber-engine.js"></script>
+  <script>
+    // Audio Alert Toggle
+    function toggleAudio() {
+      const state = CyberEngine.toggleSound();
+      document.getElementById('soundIconOn').style.display = state ? 'block' : 'none';
+      document.getElementById('soundIconOff').style.display = state ? 'none' : 'block';
+      showToast(state ? 'Cyber audio alerts enabled' : 'Cyber audio alerts muted');
+    }
+
+    // Toast Notification
+    function showToast(msg) {
+      const t = document.getElementById('cyberToast');
+      document.getElementById('toastMsg').textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2800);
+    }
+
+    /* ==========================================================================
+       6. INTERACTIVE SPOT-THE-SCAM QUIZ
+       ========================================================================== */
+    const quizData = [
+      {
+        category: "Digital Arrest",
+        text: "You receive a WhatsApp video call from a person in a police uniform sitting in front of a CBI logo, claiming an illegal courier with narcotics was intercepted in your name, demanding you stay on the call.",
+        isScam: true,
+        explanation: "100% SCAM. Indian police and investigative agencies NEVER hold judicial hearings or execute arrests via WhatsApp or Skype video calls."
+      },
+      {
+        category: "Electricity Disconnection",
+        text: "An SMS arrives: 'Dear consumer your power will be disconnected at 9:30 PM due to unpaid bill. Immediately dial 9876543210 and install PowerUpdate.apk.'",
+        isScam: true,
+        explanation: "100% SCAM. State electricity distribution companies never distribute .APK files or request personal calls to private phone numbers."
+      },
+      {
+        category: "Legitimate Banking",
+        text: "An SMS from sender 'VK-HDFCBK': 'Rs 1,200.00 debited from a/c **4120 on 22-Sep-26 at Zomato. UPI Ref 429381. If not done by you, SMS BLOCK to 5676712.'",
+        isScam: false,
+        explanation: "LEGITIMATE. This is a standard debit notification with a recognized official sender ID and standard SMS blocking instructions."
+      },
+      {
+        category: "Telegram Job Task",
+        text: "A WhatsApp contact offers work from home: 'Earn ₹3,000/day by liking YouTube videos. Deposit ₹500 security deposit to unlock VIP Telegram task group.'",
+        isScam: true,
+        explanation: "100% SCAM. Upfront deposit requests to 'unlock' easy tasks are classic merchant prepaid task scams."
+      },
+      {
+        category: "Customs Clearance",
+        text: "Caller claims an international gift package sent by your overseas friend is stuck at customs and requires you to immediately transfer a Rs 1,400 penalty to an individual UPI address.",
+        isScam: true,
+        explanation: "100% SCAM. Legitimate customs duties are assessed officially through formal courier receipts, never via personal UPI transfers."
+      }
+    ];
+
+    let currentQuizIndex = 0;
+    let quizScore = 0;
+
+    function renderQuiz() {
+      const q = quizData[currentQuizIndex];
+      document.getElementById('quizQuestionNum').textContent = `Question ${currentQuizIndex + 1} of ${quizData.length}`;
+      document.getElementById('quizCategoryLabel').textContent = `Category: ${q.category}`;
+      document.getElementById('quizProgressBar').style.width = ((currentQuizIndex + 1) / quizData.length * 100) + '%';
+      document.getElementById('quizScenarioText').textContent = q.text;
+
+      document.getElementById('btnChoiceScam').disabled = false;
+      document.getElementById('btnChoiceLegit').disabled = false;
+      document.getElementById('btnChoiceScam').className = 'quiz-choice-btn';
+      document.getElementById('btnChoiceLegit').className = 'quiz-choice-btn';
+
+      document.getElementById('quizFeedbackBox').style.display = 'none';
+      document.getElementById('btnNextQuiz').style.display = 'none';
+    }
+
+    function handleQuizAnswer(userChoseScam) {
+      const q = quizData[currentQuizIndex];
+      const isCorrect = userChoseScam === q.isScam;
+
+      document.getElementById('btnChoiceScam').disabled = true;
+      document.getElementById('btnChoiceLegit').disabled = true;
+
+      if (userChoseScam) {
+        document.getElementById('btnChoiceScam').classList.add(isCorrect ? 'correct' : 'wrong');
+      } else {
+        document.getElementById('btnChoiceLegit').classList.add(isCorrect ? 'correct' : 'wrong');
+      }
+
+      if (isCorrect) {
+        quizScore++;
+        CyberEngine.playCyberSound('success');
+      } else {
+        CyberEngine.playCyberSound('critical');
+      }
+
+      document.getElementById('quizScoreBadge').textContent = `Score: ${quizScore} / ${quizData.length}`;
+
+      const feedback = document.getElementById('quizFeedbackBox');
+      feedback.style.display = 'block';
+      feedback.innerHTML = `
+        <strong style="color:${isCorrect ? 'var(--emerald)' : 'var(--rose)'};">
+          ${isCorrect ? '🎉 Correct Analysis!' : '❌ Incorrect Assessment'}
+        </strong>
+        <p style="margin-top:6px; font-size:0.86rem; color:var(--text-main);">${q.explanation}</p>
+      `;
+
+      document.getElementById('btnNextQuiz').style.display = 'flex';
+    }
+
+    function nextQuizQuestion() {
+      currentQuizIndex++;
+      if (currentQuizIndex < quizData.length) {
+        renderQuiz();
+      } else {
+        // Quiz completed
+        document.getElementById('quizScenarioText').innerHTML = `
+          <div style="text-align:center; padding:10px 0;">
+            <div style="font-size:2.4rem; margin-bottom:8px;">🏆</div>
+            <h3 style="font-size:1.3rem; font-weight:800; color:var(--cyan); margin-bottom:6px;">Challenge Completed!</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">You scored <strong>${quizScore} out of ${quizData.length}</strong>.</p>
+            <div class="ticker-badge" style="background:rgba(16,185,129,0.2); color:var(--emerald); border-color:var(--emerald); padding:6px 16px; margin-top:12px; font-size:0.82rem;">
+              CYBER VIGILANCE BADGE VERIFIED
+            </div>
+          </div>
+        `;
+        document.querySelector('.quiz-options').style.display = 'none';
+        document.getElementById('quizFeedbackBox').style.display = 'none';
+        document.getElementById('btnNextQuiz').style.display = 'none';
+      }
+    }
+
+
+    // Window Load Init
+    window.addEventListener('DOMContentLoaded', () => {
+      renderQuiz();
+    });
+
+  </script>
+</body>
+</html>

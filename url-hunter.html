@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>URL Hunter — CyberGuard SOC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="cyber-theme.css">
+</head>
+<body>
+
+  <!-- Top Real-Time Threat Telemetry Marquee -->
+  <div class="ticker-bar" id="liveTickerBar">
+    <div class="wrap ticker-inner">
+      <div class="ticker-badge"><span class="pulse-dot"></span> LIVE INTEL</div>
+      <div class="ticker-content" id="tickerContent">
+        <span>⚠ HIGH-ALERT:</span> Spurt in fake <strong>CBI / Digital Arrest</strong> extortion video calls reported across Delhi NCR & Mumbai.
+        <span>•</span> <span>HOTLINE:</span> Dial <strong>1930</strong> within 2 hours of unauthorized financial debit to freeze money in transit.
+        <span>•</span> <span>ALERT:</span> New wave of malicious <strong>Electricity Bill Disconnection SMS</strong> with fraudulent .APK links neutralized.
+        <span>•</span> <span>ADVISORY:</span> Indian Courts & Police NEVER place individuals under "Digital Arrest" via WhatsApp or Skype.
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Sticky Header -->
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a href="index.html" class="sidebar-brand">
+        <span class="brand-name">CyberGuard SOC</span>
+        <span class="brand-tag">Real-Time Defense Model</span>
+      </a>
+
+      <nav class="sidebar-nav">
+        <a href="index.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          Dashboard
+        </a>
+        <a href="scanner.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          Scam & SMS Scanner
+        </a>
+        <a href="email.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg>
+          Email Scanner
+        </a>
+        <a href="url-hunter.html" class="sidebar-link active">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          URL Hunter
+        </a>
+        <a href="apk-scanner.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          APK Scanner
+        </a>
+        <a href="password-vault.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Password Vault
+        </a>
+        <a href="quiz.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Quiz Challenge
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="live-pill" id="livePill">
+          <span class="green-dot"></span> Telemetry Active
+        </div>
+        <button class="btn-icon" id="soundToggleBtn" onclick="toggleAudio()" title="Toggle Cyber Audio Alerts">
+          <svg id="soundIconOn" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <svg id="soundIconOff" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <div class="main-content">
+
+  <main class="wrap">
+
+    <!-- ================= VIEW 3: URL & DOMAIN HUNTER ================= -->
+    <div id="view-url" class="panel-view active">
+      <div class="panel-card url-hunter-wrap">
+        <div class="panel-head">
+          <div class="panel-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            Real-Time Malicious URL & Lookalike Domain Inspector
+          </div>
+          <span class="ticker-badge" style="background:rgba(16,185,129,0.15); color:var(--emerald); border-color:var(--emerald);">Heuristic Engine Active</span>
+        </div>
+
+        <p style="color:var(--text-muted); font-size:0.92rem;">
+          Detects fraudulent banking domains, typosquatting traps (e.g. <code>sbi-kyc-auth.xyz</code>), malicious TLDs, and IP-based phishing redirects.
+        </p>
+
+        <div class="url-input-group">
+          <input type="text" class="cyber-input" id="urlInput" placeholder="Enter link or domain to scan (e.g. http://sbi-kyc-update.xyz or http://192.168.1.50/pay)" oninput="handleUrlInput()">
+          <button class="btn-primary" onclick="handleUrlInput()">
+            Inspect Domain
+          </button>
+        </div>
+
+        <div class="sample-pills" style="margin-top:-10px;">
+          <button class="sample-btn" onclick="fillUrl('http://sbi-kyc-verification.xyz/login')">🚨 Try Fake SBI Phishing URL</button>
+          <button class="sample-btn" onclick="fillUrl('http://paytm-cashback-reward.top/claim')">🚨 Try Fake Paytm Reward Trap</button>
+          <button class="sample-btn" onclick="fillUrl('http://185.220.101.5/auth.apk')">🚨 Try Direct IP APK Dropper</button>
+          <button class="sample-btn" onclick="fillUrl('https://onlinesbi.sbi')">✅ Try Official SBI Portal</button>
+          <button class="sample-btn" onclick="fillUrl('https://cybercrime.gov.in')">✅ Try Official Cybercrime Portal</button>
+        </div>
+
+        <!-- URL Analysis Results Display -->
+        <div id="urlResultsArea" style="display:none; margin-top:10px;">
+          <div class="url-analysis-grid">
+            <div class="url-metric">
+              <div class="url-metric-title">Link Verdict</div>
+              <div class="url-metric-status" id="urlVerdictTitle">Safe Link</div>
+            </div>
+            <div class="url-metric">
+              <div class="url-metric-title">Risk Assessment</div>
+              <div class="url-metric-status" id="urlRiskScore">0% Threat</div>
+            </div>
+            <div class="url-metric">
+              <div class="url-metric-title">Identified Host</div>
+              <div class="url-metric-status" id="urlHostDisplay" style="font-family:var(--font-mono); font-size:0.9rem;">-</div>
+            </div>
+          </div>
+
+          <div style="margin-top:18px;" class="action-guidance" id="urlFlagsBox">
+            <!-- Flags inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </main>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="cyber-toast" id="cyberToast">
+    <span id="toastMsg">Action completed successfully</span>
+  </div>
+
+  <!-- Educational Project Footer -->
+  <footer class="cyber-footer wrap">
+    <div class="footer-row">
+      <div>
+        <div style="font-weight:700; color:var(--text-main); margin-bottom:4px;">
+          Community Project · Cyber Security Awareness Platform
+        </div>
+        <div style="font-size:0.8rem; color:var(--text-dim);">
+          Course Code 1BCP308 · Semester III · Real-Time Threat Intelligence & Scam Detection Model
+        </div>
+      </div>
+
+      <div style="display:flex; gap:16px; align-items:center;">
+        <a href="https://cybercrime.gov.in" target="_blank" rel="noopener" style="color:var(--cyan); text-decoration:none;">cybercrime.gov.in</a>
+        <span>·</span>
+        <a href="tel:1930" style="color:var(--rose); font-weight:700; text-decoration:none;">Helpline: 1930</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="cyber-engine.js"></script>
+  <script>
+    // Audio Alert Toggle
+    function toggleAudio() {
+      const state = CyberEngine.toggleSound();
+      document.getElementById('soundIconOn').style.display = state ? 'block' : 'none';
+      document.getElementById('soundIconOff').style.display = state ? 'none' : 'block';
+      showToast(state ? 'Cyber audio alerts enabled' : 'Cyber audio alerts muted');
+    }
+
+    // Toast Notification
+    function showToast(msg) {
+      const t = document.getElementById('cyberToast');
+      document.getElementById('toastMsg').textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2800);
+    }
+
+    /* ==========================================================================
+       3. URL HUNTER
+       ========================================================================== */
+    function fillUrl(url) {
+      document.getElementById('urlInput').value = url;
+      handleUrlInput();
+    }
+
+    function handleUrlInput() {
+      const raw = document.getElementById('urlInput').value;
+      const res = CyberEngine.analyzeUrl(raw);
+      const area = document.getElementById('urlResultsArea');
+
+      if (!res || !res.valid) {
+        area.style.display = 'none';
+        return;
+      }
+
+      area.style.display = 'block';
+      document.getElementById('urlHostDisplay').textContent = res.host;
+      document.getElementById('urlRiskScore').textContent = res.score + '% Threat';
+      document.getElementById('urlVerdictTitle').textContent = res.verdict;
+
+      const flagsBox = document.getElementById('urlFlagsBox');
+      if (res.flags.length > 0) {
+        flagsBox.innerHTML = `
+          <strong style="color:var(--rose);">Identified Vulnerability Flags:</strong>
+          <ul style="margin:8px 0 0 18px; font-size:0.84rem; line-height:1.6; color:#FECACA;">
+            ${res.flags.map(f => `<li>${f}</li>`).join('')}
+          </ul>
+        `;
+      } else {
+        flagsBox.innerHTML = `
+          <strong style="color:var(--emerald);">Clean Domain Signature:</strong>
+          <span style="display:block; margin-top:4px; color:#A7F3D0;">No lookalike characters, suspicious TLDs, or known blacklisted redirects detected.</span>
+        `;
+      }
+    }
+
+
+  </script>
+</body>
+</html>

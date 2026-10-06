@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Email Scanner — CyberGuard SOC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="cyber-theme.css">
+</head>
+<body>
+
+  <!-- Top Real-Time Threat Telemetry Marquee -->
+  <div class="ticker-bar" id="liveTickerBar">
+    <div class="wrap ticker-inner">
+      <div class="ticker-badge"><span class="pulse-dot"></span> LIVE INTEL</div>
+      <div class="ticker-content" id="tickerContent">
+        <span>⚠ HIGH-ALERT:</span> Spurt in fake <strong>CBI / Digital Arrest</strong> extortion video calls reported across Delhi NCR & Mumbai.
+        <span>•</span> <span>HOTLINE:</span> Dial <strong>1930</strong> within 2 hours of unauthorized financial debit to freeze money in transit.
+        <span>•</span> <span>ALERT:</span> New wave of malicious <strong>Electricity Bill Disconnection SMS</strong> with fraudulent .APK links neutralized.
+        <span>•</span> <span>ADVISORY:</span> Indian Courts & Police NEVER place individuals under "Digital Arrest" via WhatsApp or Skype.
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Sticky Header -->
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a href="index.html" class="sidebar-brand">
+        <span class="brand-name">CyberGuard SOC</span>
+        <span class="brand-tag">Real-Time Defense Model</span>
+      </a>
+
+      <nav class="sidebar-nav">
+        <a href="index.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          Dashboard
+        </a>
+        <a href="scanner.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          Scam & SMS Scanner
+        </a>
+        <a href="email.html" class="sidebar-link active">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg>
+          Email Scanner
+        </a>
+        <a href="url-hunter.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          URL Hunter
+        </a>
+        <a href="apk-scanner.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          APK Scanner
+        </a>
+        <a href="password-vault.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Password Vault
+        </a>
+        <a href="quiz.html" class="sidebar-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Quiz Challenge
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="live-pill" id="livePill">
+          <span class="green-dot"></span> Telemetry Active
+        </div>
+        <button class="btn-icon" id="soundToggleBtn" onclick="toggleAudio()" title="Toggle Cyber Audio Alerts">
+          <svg id="soundIconOn" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <svg id="soundIconOff" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <div class="main-content">
+
+  <main class="wrap">
+
+    <!-- ================= VIEW 2B: EMAIL SCANNER ================= -->
+    <div id="view-email" class="panel-view active">
+      <div class="scanner-grid">
+        <div class="panel-card">
+          <div class="input-label-row">
+            <label for="emailInput">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg>
+              Paste Suspicious Email Content (Subject, Sender, Body)
+            </label>
+            <span style="font-size:0.75rem; color:var(--cyan); font-weight:700;">Live Real-Time Parsing</span>
+          </div>
+
+          <div class="scam-textarea-wrap">
+            <textarea id="emailInput" class="cyber-textarea" placeholder="Paste the email's sender address, subject, and body here (e.g. 'From: support@sbi-verify.xyz — Dear Customer, your account is BLOCKED...'). Analysis updates instantly as you type." oninput="handleEmailInput()"></textarea>
+          </div>
+
+          <div class="sample-pills">
+            <button class="sample-btn" onclick="loadEmailSample(0)">🚨 Fake Bank KYC Email</button>
+            <button class="sample-btn" onclick="loadEmailSample(1)">🚨 Lottery / Prize Email</button>
+            <button class="sample-btn" onclick="loadEmailSample(2)">🚨 Fake Job Offer Email</button>
+            <button class="sample-btn" onclick="loadEmailSample(3)">✅ Genuine Order Confirmation</button>
+          </div>
+
+          <div class="token-preview-card" id="tokenPreviewCardEmail">
+            <div class="token-preview-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              Extracted Risk Tokens & Triggers
+            </div>
+            <div class="token-preview-body" id="tokenPreviewBodyEmail"></div>
+          </div>
+
+          <div class="action-row" style="margin-top:20px;">
+            <button class="btn-primary" onclick="generateAndShowEmailComplaint()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              Draft Cyber Crime Complaint (1930)
+            </button>
+            <button class="btn-secondary" onclick="saveCurrentEmailScan()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              Save to Scan History
+            </button>
+            <button class="btn-secondary" onclick="clearEmailInput()">
+              Clear
+            </button>
+          </div>
+        </div>
+
+        <div class="verdict-box" id="verdictBoxEmail">
+          <div class="verdict-header">
+            <div class="verdict-status">
+              <span class="status-indicator-circle"></span>
+              <span class="verdict-title" id="verdictTitleEmail">Awaiting Input</span>
+            </div>
+            <span class="score-badge" id="riskScoreBadgeEmail">0% RISK</span>
+          </div>
+
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted); margin-bottom:6px;">
+              <span>Threat Severity Gauge</span>
+              <span id="riskPercentLabelEmail">0%</span>
+            </div>
+            <div class="risk-progress-bar">
+              <div class="risk-progress-fill" id="riskFillEmail" style="width:0%; background:var(--emerald);"></div>
+            </div>
+          </div>
+
+          <div class="match-list" id="matchListEmail">
+            <div class="match-item">
+              <span>Paste an email to see instant multi-factor heuristic checks.</span>
+            </div>
+          </div>
+
+          <div class="action-guidance" id="actionGuidanceEmail">
+            <strong>Protective Action Protocol:</strong>
+            <span id="actionGuidanceTextEmail">No active threat detected. Verify unexpected emails directly via the organization's official website or phone number.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </main>
+
+  <!-- Cyber Crime Complaint Draft Modal -->
+  <div class="modal-overlay" id="complaintModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div class="modal-title">Official Cyber Crime Complaint Draft</div>
+        <button class="btn-icon" onclick="closeComplaintModal()">✕</button>
+      </div>
+
+      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">
+        Formatted for immediate submission to the <strong>National Cyber Crime Reporting Portal (1930 / cybercrime.gov.in)</strong>:
+      </p>
+
+      <div class="complaint-text-box" id="complaintTextContent"></div>
+
+      <div class="action-row" style="justify-content:flex-end;">
+        <button class="btn-secondary" onclick="closeComplaintModal()">Close</button>
+        <button class="btn-primary" onclick="copyComplaintText()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Report to Clipboard
+        </button>
+      </div>
+    </div>
+  </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="cyber-toast" id="cyberToast">
+    <span id="toastMsg">Action completed successfully</span>
+  </div>
+
+  <!-- Educational Project Footer -->
+  <footer class="cyber-footer wrap">
+    <div class="footer-row">
+      <div>
+        <div style="font-weight:700; color:var(--text-main); margin-bottom:4px;">
+          Community Project · Cyber Security Awareness Platform
+        </div>
+        <div style="font-size:0.8rem; color:var(--text-dim);">
+          Course Code 1BCP308 · Semester III · Real-Time Threat Intelligence & Scam Detection Model
+        </div>
+      </div>
+
+      <div style="display:flex; gap:16px; align-items:center;">
+        <a href="https://cybercrime.gov.in" target="_blank" rel="noopener" style="color:var(--cyan); text-decoration:none;">cybercrime.gov.in</a>
+        <span>·</span>
+        <a href="tel:1930" style="color:var(--rose); font-weight:700; text-decoration:none;">Helpline: 1930</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="cyber-engine.js"></script>
+  <script>
+    // Audio Alert Toggle
+    function toggleAudio() {
+      const state = CyberEngine.toggleSound();
+      document.getElementById('soundIconOn').style.display = state ? 'block' : 'none';
+      document.getElementById('soundIconOff').style.display = state ? 'none' : 'block';
+      showToast(state ? 'Cyber audio alerts enabled' : 'Cyber audio alerts muted');
+    }
+
+    // Toast Notification
+    function showToast(msg) {
+      const t = document.getElementById('cyberToast');
+      document.getElementById('toastMsg').textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2800);
+    }
+
+    /* ==========================================================================
+       2B. EMAIL SCANNER
+       ========================================================================== */
+    const sampleEmails = [
+      "From: support@sbi-verify.xyz\nSubject: Your Account Will Be Suspended\n\nDear Customer, your SBI Net Banking account KYC has expired. Click http://sbi-kyc-update.xyz/login immediately and verify your PAN and Aadhaar details or your account will be permanently blocked within 24 hours.",
+      "From: rewards@kbc-lottery-winners.top\nSubject: Congratulations Winner!\n\nDear Winner, your email ID has won Rs 18,50,000 in the Google KBC Lottery 2026. Send your full name, bank account number, and a processing fee of Rs 2,000 to claim your prize within 48 hours.",
+      "From: hr@global-remote-careers.buzz\nSubject: Work From Home Offer - Immediate Joining\n\nDear Candidate, you have been shortlisted for a part-time data entry job paying Rs 5,000 daily. Join our Telegram channel and deposit a refundable security fee of Rs 1,500 to activate your task account.",
+      "From: orders@amazon.in\nSubject: Your order has shipped\n\nHi, your recent order #402-1193822 has shipped and is expected to arrive on Thursday. Track your package anytime from the Orders section of your account."
+    ];
+
+    function loadEmailSample(i) {
+      document.getElementById('emailInput').value = sampleEmails[i];
+      handleEmailInput();
+    }
+
+    function clearEmailInput() {
+      document.getElementById('emailInput').value = '';
+      handleEmailInput();
+    }
+
+    let currentEmailAnalysis = null;
+
+    function handleEmailInput() {
+      const text = document.getElementById('emailInput').value;
+      const res = CyberEngine.analyzeScam(text);
+      currentEmailAnalysis = res;
+
+      const verdictBox = document.getElementById('verdictBoxEmail');
+      const verdictTitle = document.getElementById('verdictTitleEmail');
+      const riskScoreBadge = document.getElementById('riskScoreBadgeEmail');
+      const riskPercentLabel = document.getElementById('riskPercentLabelEmail');
+      const riskFill = document.getElementById('riskFillEmail');
+      const matchList = document.getElementById('matchListEmail');
+      const guidance = document.getElementById('actionGuidanceTextEmail');
+      const tokenCard = document.getElementById('tokenPreviewCardEmail');
+      const tokenBody = document.getElementById('tokenPreviewBodyEmail');
+
+      verdictBox.classList.remove('v-critical', 'v-high', 'v-safe');
+
+      if (!text.trim()) {
+        verdictTitle.textContent = "Awaiting Input";
+        riskScoreBadge.textContent = "0% RISK";
+        riskPercentLabel.textContent = "0%";
+        riskFill.style.width = "0%";
+        matchList.innerHTML = `<div class="match-item"><span>Paste an email to see instant multi-factor heuristic checks.</span></div>`;
+        guidance.textContent = "No active threat detected. Verify unexpected emails directly via the organization's official website or phone number.";
+        tokenCard.classList.remove('show');
+        return;
+      }
+
+      const highlighted = CyberEngine.highlightScamTokens(text);
+      tokenBody.innerHTML = highlighted;
+      tokenCard.classList.add('show');
+
+      riskScoreBadge.textContent = res.score + "% RISK";
+      riskPercentLabel.textContent = res.score + "%";
+      riskFill.style.width = res.score + "%";
+
+      if (res.level === 'CRITICAL') {
+        verdictBox.classList.add('v-critical');
+        verdictTitle.textContent = "Critical High-Risk Phishing Email";
+        riskFill.style.background = "var(--rose)";
+      } else if (res.level === 'CAUTION') {
+        verdictBox.classList.add('v-high');
+        verdictTitle.textContent = "Suspicious / Caution";
+        riskFill.style.background = "var(--amber)";
+      } else {
+        verdictBox.classList.add('v-safe');
+        verdictTitle.textContent = "Likely Safe Email";
+        riskFill.style.background = "var(--emerald)";
+      }
+
+      if (res.matches.length > 0) {
+        matchList.innerHTML = res.matches.map(m => `
+          <div class="match-item ${m.severity === 'CRITICAL' ? 'danger' : 'warn'}">
+            <strong>${m.category}</strong>: ${m.advisory}
+          </div>
+        `).join('');
+
+        guidance.innerHTML = `
+          <strong>Emergency Directives:</strong>
+          1. Do NOT click any links or download attachments.<br>
+          2. Never reply with OTPs, passwords, or bank details.<br>
+          3. Verify the sender by contacting the organization directly through its official website.
+        `;
+      } else {
+        matchList.innerHTML = `
+          <div class="match-item">
+            <span>✅ No known phishing or extortion patterns detected in email vocabulary.</span>
+          </div>
+        `;
+        guidance.textContent = "Standard message patterns. Always verify requests for OTPs or money directly via official channels.";
+      }
+    }
+
+    function generateAndShowEmailComplaint() {
+      const text = document.getElementById('emailInput').value;
+      if (!text.trim()) {
+        showToast('Paste an email first to generate a report');
+        return;
+      }
+      const draft = CyberEngine.generateComplaintDraft(text, currentEmailAnalysis || CyberEngine.analyzeScam(text));
+      document.getElementById('complaintTextContent').textContent = draft;
+      document.getElementById('complaintModal').classList.add('active');
+    }
+
+    function saveCurrentEmailScan() {
+      const text = document.getElementById('emailInput').value;
+      if (!text.trim()) {
+        showToast('Nothing to save yet');
+        return;
+      }
+      CyberEngine.HistoryManager.addScan({
+        snippet: text.substring(0, 70) + '...',
+        level: currentEmailAnalysis ? currentEmailAnalysis.level : 'SAFE',
+        score: currentEmailAnalysis ? currentEmailAnalysis.score : 0
+      });
+      showToast('Email scan saved to local audit history');
+    }
+
+
+    function closeComplaintModal() {
+      document.getElementById('complaintModal').classList.remove('active');
+    }
+
+    function copyComplaintText() {
+      const content = document.getElementById('complaintTextContent').textContent;
+      navigator.clipboard.writeText(content).then(() => {
+        showToast('Complaint draft copied to clipboard!');
+      });
+    }
+
+  </script>
+</body>
+</html>
